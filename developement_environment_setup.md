@@ -1,10 +1,10 @@
 # Introduction
 
-Several software projects we use in this class decided to do major updates that contains breaking changes last year. This is a common issue in software engineering called [Dependency Hell](https://en.wikipedia.org/wiki/Dependency_hell). Understanding the software engineering aspect of this problem is beyond the scope of this class. We will focus on correctly configuring the environment so that we can run our class worksheets and our homework problem sets.
+Several software projects we use in this class did major updates that contained breaking changes last year, which in turn caused problems for many of us. This is a common issue in software engineering called [Dependency Hell](https://en.wikipedia.org/wiki/Dependency_hell). Understanding the software engineering aspect of this problem is beyond the scope of this class. We will focus on correctly configuring the environment so that we can run our class worksheets and our homework problem sets.
 
-Please follow the instructions below carefully. And if you still have trouble running the worksheets, don't hesitate to reach out your TA and professor. There is a TA office hour this Thursday and my office hour this Friday. **Please come AFTER you have gone through, tried the instructions below and still cannot run the worksheets. Additionally it would be very helpful to your TA and me if you could show a summary of what is not working (such as entire error messages, complete screenshots of WHERE the error happens, and a history of the commands you executed).**
+Please follow the instructions below carefully. And if you still have trouble running the worksheets, don't hesitate to reach out to the TA and me. Our office hours are Monday 9:30-10:30 am, Thursday 5:30-6:30pm, and Friday 3-4pm. **Please come AFTER you have gone through, tried the instructions below and still find yourself unable to run the worksheets. Additionally it would be very helpful to your TA and me if you could show a summary of what is not working (such as entire error messages, complete screenshots of WHERE the error happens, and a history of the commands you executed).**
 
-# Window
+# Windows
 
 *THE FOLLOWING INSTRUCTIONS ONLY APPLY TO WINDOWS MACHINES. IF YOU HAVE A MACOS, SKIP TO THE MACOS SECTION.*
 
@@ -35,7 +35,7 @@ Look for `ipopt`. If ipopt is listed as
 ipopt                     3.14.14              h1709daf_1    conda-forge
 ```
 
-on your computer, your operating system is Windows, and you encounter the `Could not locate the 'ipopt' executable` error, then you need to downgraph ipopt to 3.11.x.
+on your computer, your operating system is Windows, and you encounter the `Could not locate the 'ipopt' executable` error, then you need to downgraph ipopt to 3.11.1.
 
 Here's a picture showing ipopt installed at version 3.14.14:
 
@@ -55,7 +55,7 @@ You should see something like the following:
 
 ![](https://github.com/Rowena-Gan/ITOM-6264/blob/7dc4cd7839afcca73daa49ab6c15090dde797c9a/assets/ipopt_bug_2024_spring/windows_conda_ipopt.PNG)
 
-Hit `Enter` on your keyboard to select `y` and proceed. 
+Hit `Enter` on your keyboard and then select `y` to proceed. 
 
 This will install ipopt version 3.11.1
 
@@ -69,7 +69,7 @@ Now, verify that you can run Class 3 worksheet. First, you need to ***shutdown y
 
 # macOS
 
-*THE FOLLOWING INSTRUCTIONS ONLY APPLY TO macOS MACHINES. IF YOU HAVE A WINDOWS MACHINE, GO TO THE WINDOWS SECTION.*
+*THE FOLLOWING INSTRUCTIONS ONLY APPLY TO macOS MACHINES. IF YOU HAVE A WINDOWS MACHINE, GO BACK TO THE WINDOWS SECTION.*
 
 ## Cannot find `liblapack.3.dylib`
 
@@ -91,7 +91,7 @@ Terminal gives you a command line interface that you can use to interact with yo
 
 First, we need to navigate on the command line to the directory (folder) where Anaconda is installed.
 
-When a Terminal is first launch, it typically defaults to your *home directory*. Now if you run the `ls` command (that is, type `ls` on your command line and then hit `Enter` on your keyboard), you can see all the files and directories that are inside your home directory. You might recognize many names such as `Downloads`, `Desktop`, and `Pictures`.
+When a Terminal is first launched, it typically defaults to your *home directory*. Now if you run the `ls` command (that is, type `ls` on your command line and then hit `Enter` on your keyboard), you can see all the files and directories that are inside your home directory. You might recognize many names such as `Downloads`, `Desktop`, and `Pictures`.
 
 If you run the `pwd` command, you can see the full path of your home directory, in my case, it is `/Users/46784513`. `pwd` shows the full path of the directory your are *currently* in on the command line. `/Users/46784513` is too much to memorize and type, so a user's home directory is represented by a short-hand symbol `~`.
 
@@ -102,7 +102,6 @@ To navigate to a different directory on the command line, we use the `cd` comman
 
 If Anaconda is not installed in your home directory, you can find where anaconda is installed by running `which anaconda`. For example, when I run `which anaconda`, it returns `/Users/46784513/anaconda3/bin/anaconda`
 
-![](You can always return to your home directory by simply running `cd` with no input argument.)
 
 This tells me, Anaconda is installed in the `/Users/46784513/anaconda3` directory (again `/Users/46784513/` is my home directory).
 
@@ -122,15 +121,22 @@ Now check if `liblapack.3.dylib` exists by running `ls -l liblapack.3.dylib`.
 
 ![](https://github.com/Rowena-Gan/ITOM-6264/blob/7dc4cd7839afcca73daa49ab6c15090dde797c9a/assets/ipopt_bug_2024_spring/macos_liblapack.png)
 
-If it returns `liblapack.3.dylib -> libopenblas_vortexp-r0.3.21.dylib` (also seen in the picture above), that means `liblapack.3.dylib` is not a regular file; Rather, it is reference to a file named `libopenblas_vortexp-r0.3.21.dylib`. in other words, `liblapack.3.dylib` is an alias.
+If it returns `liblapack.3.dylib -> libopenblas_vortexp-r0.3.21.dylib` (also seen in the picture above), that means `liblapack.3.dylib` is not a regular file; Rather, it is reference to a file named `libopenblas_vortexp-r0.3.21.dylib`. When you open `liblapack.3.dylib`, you're actually opening `libopenblas_vortexp-r0.3.21.dylib`.
 
-Now check if `libopenblas_vortexp-r0.3.21.dylib` exists by running `ls -l libopenblas_vortexp-r0.3.21.dylib`.
+Note that you may see `liblapack.3.dylib` refer to a different file. For example, you may see `liblapack.3.dylib -> libopenblas_vortexp.dylib`. That's ok. Just remember the file that `liblapack.3.dylib` refers to. 
+
+> [!IMPORTANT]  
+> Remember the file that `liblapack.3.dylib` refers to.
+
+Now check if `libopenblas_vortexp-r0.3.21.dylib` exists by running `ls -l libopenblas_vortexp-r0.3.21.dylib`. Again, if you saw a different file name in the last step than `libopenblas_vortexp-r0.3.21.dylib`, you want to put that file name after `ls -l`. For example, if you saw `liblapack.3.dylib -> libopenblas_vortexp.dylib` in the last step, you want to run  `ls -l libopenblas_vortexp.dylib`.
 
 ![](https://github.com/Rowena-Gan/ITOM-6264/blob/7dc4cd7839afcca73daa49ab6c15090dde797c9a/assets/ipopt_bug_2024_spring/macos_libopenblas_vortexp.png)
 
-If it returns `No such file or directory`, we have found the cause of our problem. We need to make sure the `libopenblas_vortexp-r0.3.21.dylib` file exists and it is the correct file.
+If it returns `No such file or directory`, as it is in the case in the picture above, that means `libopenblas_vortexp-r0.3.21.dylib` does not exist. Therefore, when we run `results = solver.solve(model)` and it tries to open `liblapack.3.dylib`, it will indeed not find an actual file to open. This is the cause of the error we see.
 
-Luckily the name `libopenblas_vortexp-r0.3.21.dylib` tells us that it's part of the `libopenblas` project. Now let's see what libraries (that is `.dylib` files) we have installed that belongs to the `libopenblas` project.
+To solve this problem, our next step is to make sure that the `libopenblas_vortexp-r0.3.21.dylib` file exists.
+
+The name `libopenblas_vortexp-r0.3.21.dylib` tells us that it's part of the `libopenblas` project. Now let's see what libraries (that is, `.dylib` files) we have installed that belong to the `libopenblas` project.
 
 Run `ls -l libopenblas*` inside the `lib` directory (which you should already be in). If you're running the latest Anaconda version and have followed the instructions to try to install pyomo and ipopt, then you will see something like:
 
@@ -140,7 +146,7 @@ That tells we have 2 regular libraries installed that are part of the `libopenbl
 
 ### Step 3: Create a symlink for `libopenblas_vortexp-r0.3.21.dylib`
 
-Now we are going to create a symlink that points `libopenblas_vortexp-r0.3.21.dylib` to `libopenlabsp-r0.3.21.dylib`. Details about how symlink works are beyond the scope of this class. If you're interested, please feel free to read more on [Wikipedia](https://en.wikipedia.org/wiki/Symbolic_link), [freecodecamp](https://www.freecodecamp.org/news/symlink-tutorial-in-linux-how-to-create-and-remove-a-symbolic-link/), or [Linux manual page](https://man7.org/linux/man-pages/man1/ln.1.html).
+Now we are going to create a symlink that points `libopenblas_vortexp-r0.3.21.dylib` (or the filename that you saw in Step 2) to `libopenlabsp-r0.3.21.dylib`. Details about how symlink works are beyond the scope of this class. If you're interested, please feel free to read more on [Wikipedia](https://en.wikipedia.org/wiki/Symbolic_link), [freecodecamp](https://www.freecodecamp.org/news/symlink-tutorial-in-linux-how-to-create-and-remove-a-symbolic-link/), or [Linux manual page](https://man7.org/linux/man-pages/man1/ln.1.html).
 
 Practically, we need to run the following command to create the symlink we need. Note: *the file names that are needed on your machine might differ from this example. Make sure you follow the steps above and use the correct file names.*
 
