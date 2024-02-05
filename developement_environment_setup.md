@@ -14,7 +14,7 @@ Please follow the instructions below carefully. And if you still have trouble ru
 One common issue on Windows is `WARNING: Could not locate the 'ipopt' executable, which is required for solver
 ipopt` when we try to run `results = solver.solve(model)` under "Example 1: Rosenbrock".
 
-![](https://github.com/LedgeDash/ITOM6264/blob/c2c96c02f8895314bd7320b97a77d6555db04f70/windows_cannot_locate_ipopt_executable_error.PNG)
+![](https://github.com/Rowena-Gan/ITOM-6264/blob/7dc4cd7839afcca73daa49ab6c15090dde797c9a/assets/ipopt_bug_2024_spring/windows_cannot_locate_ipopt_executable_error.PNG)
 
 The cause of this error is that ipopt [stopped shipping an `ipopt` binary on Windows after 3.11](https://github.com/conda-forge/ipopt-feedstock/issues/55) due to Windows' lack of support for [`ampl-mp`](https://github.com/ampl/mp). For our class, we can safely use an older version of ipopt on Windows that still ships with a binary.
 
@@ -24,7 +24,7 @@ On Windows, Anaconda provides 2 command line interfaces for conda: one is "CMD.e
 
 To launch a Powershell Prompt, open Anaconda Navigator. You will see both "CMD.exe Prompt", and "Powershell Prompt":
 
-![](https://github.com/LedgeDash/ITOM6264/blob/c2c96c02f8895314bd7320b97a77d6555db04f70/windows_anaconda_navigator.PNG)
+![](https://github.com/Rowena-Gan/ITOM-6264/blob/7dc4cd7839afcca73daa49ab6c15090dde797c9a/assets/ipopt_bug_2024_spring/windows_anaconda_navigator.PNG)
 
 Click "Launch" under "Powershell Prompt" to launch a Powershell. (We'll use Powershell for this tutorial, but CMD.exe could also work)
 
@@ -40,7 +40,7 @@ on your computer, your operating system is Windows, and you encounter the `Could
 
 Here's a picture showing ipopt installed at version 3.14.14:
 
-![](https://github.com/LedgeDash/ITOM6264/blob/c2c96c02f8895314bd7320b97a77d6555db04f70/windows_conda_ipopt_latest_version.PNG)
+![](https://github.com/Rowena-Gan/ITOM-6264/blob/7dc4cd7839afcca73daa49ab6c15090dde797c9a/assets/ipopt_bug_2024_spring/windows_conda_ipopt_latest_version.PNG)
 
 If you don't see ipopt at all, that means you have not installed any version of ipopt at all. If you have not installed ipopt at all, simply follow the rest of this article to install ipopt.
 
@@ -54,7 +54,7 @@ conda install conda-forge/label/cf202003::ipopt
 
 You should see something like the following:
 
-![](https://github.com/LedgeDash/ITOM6264/blob/c2c96c02f8895314bd7320b97a77d6555db04f70/windows_conda_ipopt.PNG)
+![](https://github.com/Rowena-Gan/ITOM-6264/blob/7dc4cd7839afcca73daa49ab6c15090dde797c9a/assets/ipopt_bug_2024_spring/windows_conda_ipopt.PNG)
 
 Hit `Enter` on your keyboard to select `y` and proceed. 
 
@@ -76,15 +76,15 @@ Now, verify that you can run Class 3 worksheet. First, you need to ***shutdown y
 
 One common issue on macOS is unable to locate `liblapack.3.dylib` which happens when we try to run `results = solver.solve(model)` under "Example 1: Rosenbrock":
 
-![](https://github.com/LedgeDash/ITOM6264/blob/c2c96c02f8895314bd7320b97a77d6555db04f70/macos_cannot_locate_liblapack_error.png)
+![](https://github.com/Rowena-Gan/ITOM-6264/blob/7dc4cd7839afcca73daa49ab6c15090dde797c9a/assets/ipopt_bug_2024_spring/macos_cannot_locate_liblapack_error.png)
 
 This error is caused by a bug in the `liblapack` project. We need to actually fix this bug to run our worksheets.
 
 First open a Terminal by opening your macOS Launchpad, going into `Other`, and clicking on `Terminal`.
 
-![](https://github.com/LedgeDash/ITOM6264/blob/c2c96c02f8895314bd7320b97a77d6555db04f70/macos_terminal_1.png)
+![](https://github.com/Rowena-Gan/ITOM-6264/blob/7dc4cd7839afcca73daa49ab6c15090dde797c9a/assets/ipopt_bug_2024_spring/macos_terminal_1.png)
 
-![](https://github.com/LedgeDash/ITOM6264/blob/c2c96c02f8895314bd7320b97a77d6555db04f70/macos_terminal_2.png)
+![](https://github.com/Rowena-Gan/ITOM-6264/blob/7dc4cd7839afcca73daa49ab6c15090dde797c9a/assets/ipopt_bug_2024_spring/macos_terminal_2.png)
 
 Terminal gives you a command line interface that you can use to interact with you macOS machine. It is more powerful than the graphic user interface that we normally use, as you will see later.
 
@@ -117,17 +117,17 @@ Once you navigate to the `anaconda3` directory on the command line, we'll check 
 
 Run `ls` and see if you have a directory named `lib`. Go into `lib` using `cd` (that is, run `cd lib`).
 
-![](https://github.com/LedgeDash/ITOM6264/blob/c2c96c02f8895314bd7320b97a77d6555db04f70/macos_ls_lib.png)
+![](https://github.com/Rowena-Gan/ITOM-6264/blob/7dc4cd7839afcca73daa49ab6c15090dde797c9a/assets/ipopt_bug_2024_spring/macos_ls_lib.png)
 
 Now check if `liblapack.3.dylib` exists by running `ls -l liblapack.3.dylib`. 
 
-![](https://github.com/LedgeDash/ITOM6264/blob/c2c96c02f8895314bd7320b97a77d6555db04f70/macos_liblapack.png)
+![](https://github.com/Rowena-Gan/ITOM-6264/blob/7dc4cd7839afcca73daa49ab6c15090dde797c9a/assets/ipopt_bug_2024_spring/macos_liblapack.png)
 
 If it returns `liblapack.3.dylib -> libopenblas_vortexp-r0.3.21.dylib` (also seen in the picture above), that means `liblapack.3.dylib` is not a regular file; Rather, it is reference to a file named `libopenblas_vortexp-r0.3.21.dylib`. in other words, `liblapack.3.dylib` is an alias.
 
 Now check if `libopenblas_vortexp-r0.3.21.dylib` exists by running `ls -l libopenblas_vortexp-r0.3.21.dylib`.
 
-![](https://github.com/LedgeDash/ITOM6264/blob/c2c96c02f8895314bd7320b97a77d6555db04f70/macos_libopenblas_vortexp.png)
+![](https://github.com/Rowena-Gan/ITOM-6264/blob/7dc4cd7839afcca73daa49ab6c15090dde797c9a/assets/ipopt_bug_2024_spring/macos_libopenblas_vortexp.png)
 
 If it returns `No such file or directory`, we have found the cause of our problem. We need to make sure the `libopenblas_vortexp-r0.3.21.dylib` file exists and it is the correct file.
 
@@ -135,7 +135,7 @@ Luckily the name `libopenblas_vortexp-r0.3.21.dylib` tells us that it's part of 
 
 Run `ls -l libopenblas*` inside the `lib` directory (which you should already be in). If you're running the latest Anaconda version and have followed the instructions to try to install pyomo and ipopt, then you will see something like:
 
-![](https://github.com/LedgeDash/ITOM6264/blob/c2c96c02f8895314bd7320b97a77d6555db04f70/macos_libopenblas.png)
+![](https://github.com/Rowena-Gan/ITOM-6264/blob/7dc4cd7839afcca73daa49ab6c15090dde797c9a/assets/ipopt_bug_2024_spring/macos_libopenblas.png)
 
 That tells we have 2 regular libraries installed that are part of the `libopenblas` project: `libopenblas.dylib` and `libopenlabsp-r0.3.21.dylib`. We will use the `libopenlabsp-r0.3.21.dylib` library.
 
