@@ -4,7 +4,7 @@ Several software projects we use in this class decided to do major updates that 
 
 Please follow the instructions below carefully. And if you still have trouble running the worksheets, don't hesitate to reach out your TA and professor. There is a TA office hour this Thursday and my office hour this Friday. **Please come AFTER you have gone through, tried the instructions below and still cannot run the worksheets. Additionally it would be very helpful to your TA and me if you could show a summary of what is not working (such as entire error messages, complete screenshots of WHERE the error happens, and a history of the commands you executed).**
 
-# Windows
+# Window
 
 *THE FOLLOWING INSTRUCTIONS ONLY APPLY TO WINDOWS MACHINES. IF YOU HAVE A MACOS, SKIP TO THE MACOS SECTION.*
 
