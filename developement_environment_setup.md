@@ -14,7 +14,7 @@ Please follow the instructions below carefully. And if you still have trouble ru
 One common issue on Windows is `WARNING: Could not locate the 'ipopt' executable, which is required for solver
 ipopt` when we try to run `results = solver.solve(model)` under "Example 1: Rosenbrock".
 
-(!pic)
+![](https://github.com/LedgeDash/ITOM6264/blob/c2c96c02f8895314bd7320b97a77d6555db04f70/windows_cannot_locate_ipopt_executable_error.PNG)
 
 The cause of this error is that ipopt [stopped shipping an `ipopt` binary on Windows after 3.11](https://github.com/conda-forge/ipopt-feedstock/issues/55) due to Windows' lack of support for [`ampl-mp`](https://github.com/ampl/mp). For our class, we can safely use an older version of ipopt on Windows that still ships with a binary.
 
@@ -24,9 +24,9 @@ On Windows, Anaconda provides 2 command line interfaces for conda: one is "CMD.e
 
 To launch a Powershell Prompt, open Anaconda Navigator. You will see both "CMD.exe Prompt", and "Powershell Prompt":
 
-(!pic)
+![](https://github.com/LedgeDash/ITOM6264/blob/c2c96c02f8895314bd7320b97a77d6555db04f70/windows_anaconda_navigator.PNG)
 
-Click "Launch" under "Powershell Prompt" to launch a Powershell.
+Click "Launch" under "Powershell Prompt" to launch a Powershell. (We'll use Powershell for this tutorial, but CMD.exe could also work)
 
 In the Powershell, run `conda list` by typing `conda list` and then hit `Enter` on your keyboard. You should see all packages that are installed by conda on your computer listed in *alphabetical order*.
 
@@ -40,7 +40,7 @@ on your computer, your operating system is Windows, and you encounter the `Could
 
 Here's a picture showing ipopt installed at version 3.14.14:
 
-(!pic)
+![](https://github.com/LedgeDash/ITOM6264/blob/c2c96c02f8895314bd7320b97a77d6555db04f70/windows_conda_ipopt_latest_version.PNG)
 
 If you don't see ipopt at all, that means you have not installed any version of ipopt at all. If you have not installed ipopt at all, simply follow the rest of this article to install ipopt.
 
@@ -49,6 +49,14 @@ Next, install ipopt 3.11.1 using
 ```
 conda install conda-forge/label/cf202003::ipopt
 ```
+
+`cf202003` is a [label that the ipopt developers created for the distribution of their software on conda](https://anaconda.org/conda-forge/ipopt).
+
+You should see something like the following:
+
+![](https://github.com/LedgeDash/ITOM6264/blob/c2c96c02f8895314bd7320b97a77d6555db04f70/windows_conda_ipopt.PNG)
+
+Hit `Enter` on your keyboard to select `y` and proceed. 
 
 This will install ipopt version 3.11.1
 
@@ -68,11 +76,15 @@ Now, verify that you can run Class 3 worksheet. First, you need to ***shutdown y
 
 One common issue on macOS is unable to locate `liblapack.3.dylib` which happens when we try to run `results = solver.solve(model)` under "Example 1: Rosenbrock":
 
-(!pic)
+![](https://github.com/LedgeDash/ITOM6264/blob/c2c96c02f8895314bd7320b97a77d6555db04f70/macos_cannot_locate_liblapack_error.png)
 
 This error is caused by a bug in the `liblapack` project. We need to actually fix this bug to run our worksheets.
 
 First open a Terminal by opening your macOS Launchpad, going into `Other`, and clicking on `Terminal`.
+
+![](https://github.com/LedgeDash/ITOM6264/blob/c2c96c02f8895314bd7320b97a77d6555db04f70/macos_terminal_1.png)
+
+![](https://github.com/LedgeDash/ITOM6264/blob/c2c96c02f8895314bd7320b97a77d6555db04f70/macos_terminal_2.png)
 
 Terminal gives you a command line interface that you can use to interact with you macOS machine. It is more powerful than the graphic user interface that we normally use, as you will see later.
 
@@ -86,11 +98,12 @@ If you run the `pwd` command, you can see the full path of your home directory, 
 
 To navigate to a different directory on the command line, we use the `cd` command. For most people, Anaconda is installed at `~/anaconda3`. If you're in your home directory, and running `ls` lists `anaconda3` as one of the directories under `~`, you can navigate to `~/anaconda3` by running `cd anaconda3`. You can also give `cd` a more complete path, for example `cd ~/anaconda3`. `cd ~/anaconda3` can take you to `~/anaconda3` no matter which directory you are currently in on the command line, whereas `cd anaconda3` can navigate to a directory named `anaconda3` if and only if `anaconda3` is inside the directory you're currently in.
 
-! Quick Tip: You can always return to your home directory by simply running `cd` with no input argument.
+> [!TIP]
+> You can always return to your home directory by simply running `cd` with no input argument.
 
 If Anaconda is not installed in your home directory, you can find where anaconda is installed by running `which anaconda`. For example, when I run `which anaconda`, it returns `/Users/46784513/anaconda3/bin/anaconda`
 
-(!pic)
+![](You can always return to your home directory by simply running `cd` with no input argument.)
 
 This tells me, Anaconda is installed in the `/Users/46784513/anaconda3` directory (again `/Users/46784513/` is my home directory).
 
@@ -104,25 +117,25 @@ Once you navigate to the `anaconda3` directory on the command line, we'll check 
 
 Run `ls` and see if you have a directory named `lib`. Go into `lib` using `cd` (that is, run `cd lib`).
 
-(!pic)
+![](https://github.com/LedgeDash/ITOM6264/blob/c2c96c02f8895314bd7320b97a77d6555db04f70/macos_ls_lib.png)
 
 Now check if `liblapack.3.dylib` exists by running `ls -l liblapack.3.dylib`. 
 
-(!pic)
+![](https://github.com/LedgeDash/ITOM6264/blob/c2c96c02f8895314bd7320b97a77d6555db04f70/macos_liblapack.png)
 
 If it returns `liblapack.3.dylib -> libopenblas_vortexp-r0.3.21.dylib` (also seen in the picture above), that means `liblapack.3.dylib` is not a regular file; Rather, it is reference to a file named `libopenblas_vortexp-r0.3.21.dylib`. in other words, `liblapack.3.dylib` is an alias.
 
 Now check if `libopenblas_vortexp-r0.3.21.dylib` exists by running `ls -l libopenblas_vortexp-r0.3.21.dylib`.
 
-(!pic) 
+![](https://github.com/LedgeDash/ITOM6264/blob/c2c96c02f8895314bd7320b97a77d6555db04f70/macos_libopenblas_vortexp.png)
 
 If it returns `No such file or directory`, we have found the cause of our problem. We need to make sure the `libopenblas_vortexp-r0.3.21.dylib` file exists and it is the correct file.
 
-Luckly the name `libopenblas_vortexp-r0.3.21.dylib` tells us that it's part of the `libopenblas` project. Now let's see what libraries (that is `.dylib` files) we have installed that belongs to the `libopenblas` project.
+Luckily the name `libopenblas_vortexp-r0.3.21.dylib` tells us that it's part of the `libopenblas` project. Now let's see what libraries (that is `.dylib` files) we have installed that belongs to the `libopenblas` project.
 
 Run `ls -l libopenblas*` inside the `lib` directory (which you should already be in). If you're running the latest Anaconda version and have followed the instructions to try to install pyomo and ipopt, then you will see something like:
 
-(!pic)
+![](https://github.com/LedgeDash/ITOM6264/blob/c2c96c02f8895314bd7320b97a77d6555db04f70/macos_libopenblas.png)
 
 That tells we have 2 regular libraries installed that are part of the `libopenblas` project: `libopenblas.dylib` and `libopenlabsp-r0.3.21.dylib`. We will use the `libopenlabsp-r0.3.21.dylib` library.
 
@@ -136,6 +149,9 @@ Practically, we need to run the following command to create the symlink we need.
 ln -s libopenblasp-r0.3.21.dylib libopenblas_vortexp-r0.3.21.dylib
 ```
 
+> [!IMPORTANT]  
+> The file names that you should use for `ln -s` on your machine might differ from this example. Make sure you follow the steps above and use the correct file names.
+
 Now, verify that you can run Class 3 worksheet. First, you need to ***shutdown your current Jupyter Notebook instance.***, and restart a new one. Then run class 3 worksheet.
 
 # Start with A Clean Environment
@@ -143,5 +159,3 @@ Now, verify that you can run Class 3 worksheet. First, you need to ***shutdown y
 If you still cannot run class 3 worksheet after trying the above, it is best that you try starting from a clean environment. 
 
 Anaconda provides official documentation on how to uninstall: https://docs.anaconda.com/free/anaconda/install/uninstall/
-
-
