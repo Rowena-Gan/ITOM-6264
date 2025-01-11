@@ -2,7 +2,7 @@
 
 Several software projects we use in this class did major updates that contained breaking changes last year, which in turn caused problems for many of us. This is a common issue in software engineering called [Dependency Hell](https://en.wikipedia.org/wiki/Dependency_hell). Understanding the software engineering aspect of this problem is beyond the scope of this class. We will focus on correctly configuring the environment so that we can run our class worksheets and our homework problem sets.
 
-Please follow the instructions below carefully. And if you still have trouble running the worksheets, don't hesitate to reach out to the TA and me. Our office hours are Monday 9:30-10:30 am, Thursday 5:30-6:30pm, and Friday 3-4pm. **Please come AFTER you have gone through, tried the instructions below and still find yourself unable to run the worksheets. Additionally it would be very helpful to your TA and me if you could show a summary of what is not working (such as entire error messages, complete screenshots of WHERE the error happens, and a history of the commands you executed).**
+Please follow the instructions below carefully. And if you still have trouble running the worksheets, don't hesitate to reach out to the TAs. TA office hours are Wednesday 5:30-6:30 pm and Saturday 9-10 am via Zoom (Meeting ID: 919 1638 4274). **Please come AFTER you have gone through, tried the instructions below and still find yourself unable to run the worksheets. Additionally it would be very helpful to your TA if you could show a summary of what is not working (such as entire error messages, complete screenshots of WHERE the error happens, and a history of the commands you executed).**
 
 # Windows
 
@@ -11,7 +11,7 @@ Please follow the instructions below carefully. And if you still have trouble ru
 ## Cannot locate ipopt executable
 
 One common issue on Windows is `WARNING: Could not locate the 'ipopt' executable, which is required for solver
-ipopt` when we try to run `results = solver.solve(model)` under "Example 1: Rosenbrock".
+ipopt` when we try to run `results = solver.solve(model)` under "Example: Rosenbrock".
 
 ![](https://github.com/Rowena-Gan/ITOM-6264/blob/7dc4cd7839afcca73daa49ab6c15090dde797c9a/assets/ipopt_bug_2024_spring/windows_cannot_locate_ipopt_executable_error.PNG)
 
@@ -65,7 +65,7 @@ After installation, run `conda list` again, and it should show ipopt installed a
 ipopt                     3.11.1                        2    conda-forge/label/cf202003
 ```
 
-Now, verify that you can run Class 3 worksheet. First, you need to ***shutdown your current Jupyter Notebook instance.***, and restart a new one. Then run class 3 worksheet.
+Now, verify that you can run the test run worksheet. First, you need to ***shutdown your current Jupyter Notebook instance.***, and restart a new one. Then run the worksheet.
 
 # macOS
 
@@ -157,10 +157,10 @@ ln -s libopenblasp-r0.3.21.dylib libopenblas_vortexp-r0.3.21.dylib
 > [!IMPORTANT]  
 > The file names that you should use for `ln -s` on your machine might differ from this example. Make sure you follow the steps above and use the correct file names.
 
-Now, verify that you can run Class 3 worksheet. First, you need to ***shutdown your current Jupyter Notebook instance.***, and restart a new one. Then run class 3 worksheet.
+Now, verify that you can run the test run worksheet. First, you need to ***shutdown your current Jupyter Notebook instance.***, and restart a new one. Then run the worksheet.
 
 # Start with A Clean Environment
 
-If you still cannot run class 3 worksheet after trying the above, it is best that you try starting from a clean environment. 
+If you still cannot run the test run worksheet after trying the above, it is best that you try starting from a clean environment. 
 
 Anaconda provides official documentation on how to uninstall: https://docs.anaconda.com/free/anaconda/install/uninstall/
